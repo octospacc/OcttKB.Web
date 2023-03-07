@@ -10,9 +10,10 @@ tiddlywiki \
 # Move the exported folder to a better location
 mv ./Output.tmp/\$_/OcttKB/Repo ./Repo.tmp
 
-# Rename all extracted scripts to have a correct extension (remove .txt suffix)
+# Rename all extracted file to have a correct extension (remove forced .txt suffix)
+# Don't filter for just .sh files anymore as we have other kinds of files
 cd ./Repo.tmp
-for File in *.sh.txt
+for File in *.txt
 do
 	mv "$File" "${File/.txt}"
 done
@@ -23,6 +24,6 @@ cd ..
 mv ./Repo/* ./Repo.tmp/
 mv ./Repo.tmp/* ./Repo/
 
-# Move everything to the working directory, ready for the next steps
+# Move everything to the working directory, ready for the next CI steps
 mv ./Repo/* ./
-chmod +x *.sh
+chmod +x *.sh *.py || true
