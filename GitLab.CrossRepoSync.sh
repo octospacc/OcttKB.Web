@@ -8,6 +8,11 @@ tiddlywiki \
 	--load ../public/index.html \
 	--output ./Wiki \
 	--savewikifolder ./Wiki
+cd ./Wiki/tiddlers
+mkdir -p ./Normal ./System
+mv \$__*.* ./System/
+mv *.* ./Normal/
+cd ../..
 git add .
 git commit -m "OcttKB Cross-Repo Sync (HTML to Raw)"
 git push
