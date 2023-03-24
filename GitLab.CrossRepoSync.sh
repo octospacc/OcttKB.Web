@@ -1,14 +1,14 @@
 #!/bin/sh
-TargetRepo="OcttKB.Raw"
-git clone --depth 1 https://gitlab.com/octtspacc/$TargetRepo ./$TargetRepo
-cd ./$TargetRepo
-rm -rf ./Wiki
+TargetRepo="OcttKB"
+git clone --depth 1 https://gitlab.com/octtspacc/$TargetRepo ./Repo-$TargetRepo
+cd ./Repo-$TargetRepo
+rm -rf ./Wiki ./Wiki-OcttKB
 tiddlywiki \
 	--verbose \
 	--load ../public/index.html \
-	--output ./Wiki \
-	--savewikifolder ./Wiki
-cd ./Wiki/tiddlers
+	--output ./Wiki-OcttKB \
+	--savewikifolder ./Wiki-OcttKB
+cd ./Wiki-OcttKB/tiddlers
 mkdir -p ../Normal ../System
 mv \$__* ../System/
 mv * ../Normal/
