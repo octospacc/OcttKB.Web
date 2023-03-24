@@ -10,7 +10,7 @@ pages:
   stage: deploy
   script: |
     ash ./Bootstrap.sh
-    sh ./GitLab.Main.sh
+    ash ./GitLab.Main.sh
   artifacts:
     paths:
     - public
