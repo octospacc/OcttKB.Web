@@ -1,9 +1,13 @@
-#!/bin/sh
+#!/bin/bash
+
+# Ensure important directories
+mkdir -vp ./Repo
+rm -rf ./Repo.tmp ./Output.tmp || true
 
 # Export all tiddlers from the specific path of the HTML wiki
 tiddlywiki \
+	./Wiki-OcttKB \
 	--verbose \
-	--load ./public/index.html \
 	--output ./Output.tmp \
 	--save "[prefix[$:/OcttKB/Repo/]]"
 
