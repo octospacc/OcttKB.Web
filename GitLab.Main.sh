@@ -1,5 +1,5 @@
 #!/bin/sh
-. ./Lib.*.sh
+. ./Src.*.sh || true
 sh ./Main.sh
 SetupGitProfile
 TryCrossRepoSync
