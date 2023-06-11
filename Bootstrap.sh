@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e # Exit on any error
 
 # Ensure important directories
 mkdir -vp ./Repo
@@ -6,8 +7,8 @@ rm -rf ./Repo.tmp ./Output.tmp || true
 
 # Export all tiddlers from the specific path of the HTML wiki
 tiddlywiki \
+	./Wiki-OcttKB \
 	--verbose \
-	--load ./public/index.html \
 	--output ./Output.tmp \
 	--save "[prefix[$:/OcttKB/Repo/]]"
 
@@ -25,7 +26,7 @@ cd ..
 
 # Move the files of this repo to overwrite the extracted ones, then move everything back
 # This is so, if present, files from the repo are preferred, if needed in case of emergency
-mv ./Repo/* ./Repo.tmp/
+mv ./Repo/* ./Repo.tmp/ || true
 mv ./Repo.tmp/* ./Repo/
 
 # Move everything to the working directory, ready for the next CI steps
