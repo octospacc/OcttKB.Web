@@ -2,15 +2,11 @@ image: alpine:latest
 
 before_script: |
   apk update
-  apk add git wget npm python3 py3-pip
+  apk add git npm
   npm install -g tiddlywiki
-  pip3 install beautifulsoup4 html5lib
 
-pages:
+CrossRepoSync:
   stage: deploy
   script: |
     ash ./Bootstrap.sh
     ash ./Deploy.CrossRepoSync.sh
-  artifacts:
-    paths:
-    - public
